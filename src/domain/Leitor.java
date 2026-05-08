@@ -3,14 +3,14 @@ package domain;
 public class Leitor {
     private String nome;
     private String endereco;
-    private String numero;
+    private int numero;
     Livro[] livrosEmprestados;
 
 
     public void perfilLeitor(){
         System.out.println("Nome: "+nome+"\nNumero: "+numero+"\nEndereço: "+endereco);
     }
-    public Leitor(String nome, String endereco, String numero) {
+    public Leitor(String nome, String endereco, int numero) {
         this.nome = nome;
         this.endereco = endereco;
         this.numero = numero;
@@ -32,11 +32,11 @@ public class Leitor {
         this.endereco = endereco;
     }
 
-    public String getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 }
