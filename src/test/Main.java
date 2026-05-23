@@ -10,8 +10,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Biblioteca biblioteca = new Biblioteca();
         Leitores leitores = new Leitores();
+        Biblioteca biblioteca = new Biblioteca(leitores);
         int opcao;
         do {
             menu();
@@ -52,6 +52,7 @@ public class Main {
                         menuLeitor();
                         opcaoLeitor = sc.nextInt();
                         sc.nextLine();
+
                         switch (opcaoLeitor){
                             case 1:
                                 System.out.println("Nome: ");
@@ -70,8 +71,8 @@ public class Main {
                                         sc.next();
                                     }
                                 }
-                                Leitor leitor = new Leitor(nomeL, enderecoL, numeroL);
-                                leitores.addLeitor(leitor);
+                                Leitor leitorr = new Leitor(nomeL, enderecoL, numeroL);
+                                leitores.addLeitor(leitorr);
                                 break;
 
                             case 2:
@@ -83,23 +84,27 @@ public class Main {
                                 String busca = sc.nextLine();
                                 leitores.buscarLeitor(busca);
                                 break;
+                            case 4:
+                                break;
                             default:
                                 System.out.println("❌ Digite uma opção válida");
                                 break;
                         }
                     }while(opcaoLeitor != 4);
-
+                    break;
                 case 4:
+                    System.out.println("Nome do leitor: ");
+                    String nomeLeitor = sc.nextLine();
                     System.out.println("Livro a ser emprestado [nome/id]: ");
                     int idLivro;
                     String nomeLivro;
                     if (sc.hasNextInt()){
                         idLivro = sc.nextInt();
                         sc.nextLine();
-                        biblioteca.emprestarLivro(idLivro);
+                       // biblioteca.emprestarLivro(idLivro);
                     }else {
                         nomeLivro = sc.nextLine();
-                        biblioteca.emprestarLivro(nomeLivro);
+                        biblioteca.emprestarLivro(nomeLivro, nomeLeitor);
                     }
                     break;
 
