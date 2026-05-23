@@ -1,9 +1,6 @@
 package test;
 
-import domain.Biblioteca;
-import domain.Leitor;
-import domain.Leitores;
-import domain.Livro;
+import domain.*;
 
 import java.util.Scanner;
 
@@ -12,6 +9,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Leitores leitores = new Leitores();
         Biblioteca biblioteca = new Biblioteca(leitores);
+        Datas data = new Datas();
+
         int opcao;
         do {
             menu();
@@ -101,17 +100,20 @@ public class Main {
                     if (sc.hasNextInt()){
                         idLivro = sc.nextInt();
                         sc.nextLine();
-                       // biblioteca.emprestarLivro(idLivro);
+                        biblioteca.emprestarLivro(idLivro, nomeLeitor);
                     }else {
                         nomeLivro = sc.nextLine();
                         biblioteca.emprestarLivro(nomeLivro, nomeLeitor);
                     }
+
                     break;
 
                 case 5:
+                    System.out.println("Leitor: ");
+                    String nomeLeitorr = sc.nextLine();
                     System.out.println("Livro devolvido [nome]: ");
                     String nomeLivroD = sc.nextLine();
-                    biblioteca.devolverLivro(nomeLivroD);
+                    biblioteca.devolverLivro(nomeLivroD, nomeLeitorr);
                     break;
 
                 case 6:
