@@ -10,6 +10,7 @@ public class Main {
         Leitores leitores = new Leitores();
         Biblioteca biblioteca = new Biblioteca(leitores);
         Datas data = new Datas();
+        ValidaTelefone validaTelefone = new ValidaTelefone();
 
         int opcao;
         do {
@@ -58,17 +59,11 @@ public class Main {
                                 String nomeL = sc.nextLine();
                                 System.out.println("endereço: ");
                                 String enderecoL = sc.nextLine();
-                                System.out.println("Numero: ");
-                                int numeroL;
-                                while (true){
-                                    if(sc.hasNextInt()){
-                                        numeroL = sc.nextInt();
-                                        sc.nextLine();
-                                        break;
-                                    }else {
-                                        System.out.println("❌ Digite apenas números");
-                                        sc.next();
-                                    }
+                                System.out.println("Numero (Telefone): ");
+                                String numeroL = sc.nextLine();
+                                while (!validaTelefone.validarTelefone(numeroL)){
+                                    System.out.println("Digite um número válido. use apenas números. ex: 00000000000");
+                                    numeroL=sc.nextLine();
                                 }
                                 Leitor leitorr = new Leitor(nomeL, enderecoL, numeroL);
                                 leitores.addLeitor(leitorr);
@@ -111,9 +106,17 @@ public class Main {
                 case 5:
                     System.out.println("Leitor: ");
                     String nomeLeitorr = sc.nextLine();
-                    System.out.println("Livro devolvido [nome]: ");
-                    String nomeLivroD = sc.nextLine();
-                    biblioteca.devolverLivro(nomeLivroD, nomeLeitorr);
+                    System.out.println("Livro devolvido [nome/id]: ");
+                    String nomeLivroD;
+                    int idLivroD;
+                    if (sc.hasNextInt()){
+                        idLivroD = sc.nextInt();
+                        sc.nextLine();
+                        biblioteca.devolverLivro(idLivroD, nomeLeitorr);
+                    }else {
+                        nomeLivroD = sc.nextLine();
+                        biblioteca.devolverLivro(nomeLivroD, nomeLeitorr);
+                    }
                     break;
 
                 case 6:

@@ -134,4 +134,23 @@ public class Biblioteca {
         }
         System.out.println("❌ Livro não encontrado");
     }
+    public void devolverLivro(int id, String leitorr){
+        for (int i = 0; i < contador; i++) {
+            Leitor leitor = leitores.obterLeitor(leitorr);
+            if (id == livros[i].getId()) {
+                livros[i].detalhesLivro();
+                if (!livros[i].getDisponibilidade()) {
+                    livros[i].setDisponibilidade(true);
+                    leitor.devolverLivro(livros[i]);
+                    System.out.println("✅ Livro devolvido com sucesso");
+
+                } else {
+                    System.out.println("❌ Esse livro não foi emprestado");
+                }
+                return;
+            }
+
+        }
+        System.out.println("❌ Livro não encontrado");
+    }
 }

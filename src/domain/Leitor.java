@@ -3,7 +3,7 @@ package domain;
 public class Leitor {
     private String nome;
     private String endereco;
-    private int numero;
+    private String numero;
     Livro livrosEmprestados;
     int contador = 0;
 
@@ -30,7 +30,7 @@ public class Leitor {
             }
         }
     }
-    public Leitor(String nome, String endereco, int numero) {
+    public Leitor(String nome, String endereco, String numero) {
         this.nome = nome;
         this.endereco = endereco;
         this.numero = numero;
@@ -55,11 +55,11 @@ public class Leitor {
         this.endereco = endereco;
     }
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 }
